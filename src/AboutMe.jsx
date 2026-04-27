@@ -21,8 +21,8 @@ const REVEAL_CONTENT = [
   },
   {
     upper: [
-      "I study at AMA Computer College, Fairview,",
-      "taking the technical course in Information Technology.",
+      "I study at AMA Computer College, Fairview, taking the ",
+      "technical course in Information Technology.",
     ],
     lower: "Java | JavaScript | Web Development",
   },
