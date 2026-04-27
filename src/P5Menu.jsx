@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { playSelectSound } from "./utils/audio.js";
 
 const ITEMS = [
-  { id: "about",   label: "ABOUT ME",      page: "about",    fontSize: 56, offsetX: -60,  skew: -6,  skewY: 5   },
-  { id: "resume",  label: "RESUME",        page: "resume",   fontSize: 44, offsetX: -20,  skew: -11, skewY: -5  },
-  { id: "github",  label: "GITHUB LINK",   page: "github",   fontSize: 46, offsetX: 20,   skew: 0,   skewY: -4  },
-  { id: "socials", label: "SOCIALS",       page: "socials",  fontSize: 50, offsetX: 60,   skew: -3,  skewY: 5   },
-  { id: "sideproj",label: "SIDE PROJECTS", page: "sideproj", fontSize: 38, offsetX: 100,  skew: -4,  skewY: 7   },
+  { id: "about",   label: "ABOUT ME",      page: "about",    fontSize: 56, mobSize: 32, offsetX: -60,  skew: -6,  skewY: 5   },
+  { id: "resume",  label: "RESUME",        page: "resume",   fontSize: 44, mobSize: 28, offsetX: -20,  skew: -11, skewY: -5  },
+  { id: "github",  label: "GITHUB LINK",   page: "github",   fontSize: 46, mobSize: 28, offsetX: 20,   skew: 0,   skewY: -4  },
+  { id: "socials", label: "SOCIALS",       page: "socials",  fontSize: 50, mobSize: 30, offsetX: 60,   skew: -3,  skewY: 5   },
+  { id: "sideproj",label: "SIDE PROJECTS", page: "sideproj", fontSize: 38, mobSize: 24, offsetX: 100,  skew: -4,  skewY: 7   },
 ];
 
 const CLIP_SHAPE = "polygon(0% 44%, 12% 0%, 88% 8%, 100% 36%, 92% 100%, 8% 92%)";
@@ -86,6 +86,7 @@ export default function P5Menu({ onNavigate }) {
           opacity: 0;
           transform: translateX(50px);
           transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+          margin-left: var(--offset-x);
         }
 
         .p5-row.mounted {
@@ -96,6 +97,27 @@ export default function P5Menu({ onNavigate }) {
         .p5-row.active {
           transform: scale(1.12) translateX(12px); 
           z-index: 30;
+        }
+
+        /* MOBILE OVERRIDES */
+        @media (max-width: 768px) {
+          .p5-menu { gap: 8px; }
+          .p5-row { 
+            margin-left: 0 !important; 
+            transform: translateX(0);
+          }
+          .p5-row.active { transform: scale(1.08); }
+          .p5-name-tag { 
+            font-size: 38px !important; 
+            top: 20px !important; 
+            left: 20px !important; 
+          }
+          .p5-label-base {
+            -webkit-text-stroke: 6px #000 !important;
+          }
+          .p5-row.active .p5-label-base {
+            -webkit-text-stroke: 6px #fff !important;
+          }
         }
 
         .p5-skew-wrap {
@@ -204,7 +226,7 @@ export default function P5Menu({ onNavigate }) {
                 href="#"
                 className={`p5-row ${isActive ? "active" : ""} ${mounted ? "mounted" : ""}`}
                 style={{
-                  marginLeft: `${item.offsetX}px`,
+                  "--offset-x": `${item.offsetX}px`,
                   transitionDelay: mounted ? `${i * 55}ms` : "0ms",
                 }}
                 onClick={(e) => { e.preventDefault(); onNavigate?.(item.page); }}
@@ -224,7 +246,12 @@ export default function P5Menu({ onNavigate }) {
                     style={{ width: estW, height: estH }}
                   />
                   <div className="p5-label-wrap">
-                    <span className="p5-label-base" style={{ fontSize: item.fontSize }}>
+                    <span className="p5-label-base p5-responsive-font" 
+                      style={{ 
+                        fontSize: typeof window !== 'undefined' && window.innerWidth < 768 
+                          ? item.mobSize 
+                          : item.fontSize 
+                      }}>
                       {item.label}
                     </span>
                   </div>
