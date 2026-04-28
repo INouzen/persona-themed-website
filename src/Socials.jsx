@@ -58,13 +58,13 @@ const ITEMS = [
     id: "email", 
     label: "EMAIL", 
     handle: "shotoscpf@gmail.com", 
-    href: "mailto:shotoscpf@gmail.com", 
+    href: "mail to:shotoscpf@gmail.com", 
     icon: "✉️", 
     barIcon: icon3, 
     bars: 3, 
     newBars: [2], 
     counts: ["INBOX", "OUTBOX", "SPAM"],
-    links: ["mailto:shotoscpf@gmail.com", "gmail.com", "mail.google.com"],
+    links: ["mail to:shotoscpf@gmail.com", "gmail.com", "mail.google.com"],
     stats: [
       { tag: "CONTACT", value: "DIRECT", color: "#ffffff" },
       { tag: "TALK", value: "WORK",  color: "#d92323" },
@@ -103,7 +103,7 @@ export default function Socials() {
     const onKey = (e) => {
       const getLink = (link) => {
           if (!link) return "#";
-          return link.startsWith("http") || link.startsWith("mailto") ? link : "https://" + link;
+          return link.startsWith("http") || link.startsWith("mail to") ? link : "https://" + link;
       }
 
       if (e.key === "Tab") {
@@ -369,7 +369,7 @@ export default function Socials() {
           onClick={() => {
             const link = currentItem.links[i];
             if(!link) return;
-            window.open(link.startsWith("http") || link.startsWith("mailto") ? link : "https://" + link, "_blank");
+            window.open(link.startsWith("http") || link.startsWith("mail to") ? link : "https://" + link, "_blank");
             setActiveInfoBar(i);
             setFocus("right");
           }}
