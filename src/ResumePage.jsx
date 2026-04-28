@@ -11,10 +11,10 @@ const ITEMS = [
 ];
 
 const EDUCATION_ROWS = [
-  { index: "01", title: "IFPB Campus Itaporanga", status: "3rd Yr" },
-  { index: "02", title: "IT Technician", status: "Active" },
+  { index: "01", title: "AMACC Fairview", status: "2nd Yr" },
+  { index: "02", title: "BSIT", status: "Active" },
   { index: "03", title: "Java + JavaScript", status: "Learning" },
-  { index: "04", title: "Backend Practice", status: "Daily" },
+  { index: "04", title: "Frontend Practice", status: "Daily" },
 ];
 
 export default function ResumePage() {
