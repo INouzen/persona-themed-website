@@ -29,7 +29,7 @@ const ITEMS = [
     newBars: [0], 
     counts: ["CLONE", "SITE","PAGE"],
     links: [
-      "https://github.com/INouzen/felipe-netflix-clone",
+      "https://github.com/INouzen/netflix-clone",
       "https://github.com/INouzen/nouzenproto", 
       "https://github.com/INouzen/appdev-space-tourism-group-2-crew", 
     ],
@@ -41,14 +41,14 @@ const ITEMS = [
   {
     id: "instagram", 
     label: "INSTAGRAM", 
-    handle: "@ix_nouzen", 
-    href: "https://instagram.com/ix_nouzen", 
+    handle: "@shinei.0x", 
+    href: "https://instagram.com/shinei.0x", 
     icon: "📷", 
     barIcon: icon2, 
     bars: 2, 
     newBars: [1], 
     counts: ["POSTS", "REELS"],
-    links: ["instagram.com/ix_nouzen", "instagram.com"],
+    links: ["instagram.com/shinei.0x", "instagram.com"],
     stats: [
       { tag: "SOCIAL", value: "PICS", color: "#d92323" },
       { tag: "MIND", value: "LIFE",  color: "#732424" },
